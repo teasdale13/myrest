@@ -1,0 +1,19 @@
+{
+    "name": "kevinteasdaledube/myrest",
+    "authors": [
+        {
+            "name": "Kevin Teasdale-Dubé",
+            "email": "test@example.com"
+        }
+    ],
+  "require": {
+    "slim/slim": "^3.0",
+    "phpunit/phpunit" : "^8",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Models\\": "models"
+    }
+  }
+}
