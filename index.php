@@ -8,7 +8,7 @@ $c = new \Slim\Container();
 
 // instantiate the App object
 $app = new \Slim\App($c);
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=blogpost', 'root', 'jaimeprogrammer');
+$pdo = new PDO('mysql:host=127.0.0.1;dbname=blogpost', 'root', '');
 // Add route callbacks
 
 
