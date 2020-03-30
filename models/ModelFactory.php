@@ -3,7 +3,9 @@
 
 namespace Models;
 
+use Models\AccessibleModels\Category;
 use Models\AccessibleModels\Post;
+use Models\AccessibleModels\tables\CategoryTable;
 use Models\AccessibleModels\Tables\PostTable;
 use PDO;
 
@@ -22,7 +24,8 @@ class ModelFactory {
         switch ($model) {
             case PostTable::TABLE_NAME :
                 return new Post( $pdo );
-            case "" :
+            case CategoryTable::TABLE_NAME :
+                return new Category( $pdo );
         }
     }
 
