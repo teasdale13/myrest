@@ -44,7 +44,7 @@ $app->post('/{model}', function ($request, $response, $args) use ($pdo) {
             $new_obj = $my_class->insert( $request->getParams() );
             return $new_obj ? $new_obj : false;
         } else {
-            return oops( $response , 'Impossible d\'insérer');
+            return oops( $response , 'Impossible d\'insérer', 500);
         }
     } else {
         return denied( $response );
@@ -58,7 +58,7 @@ $app->put('/{model}/{id}' , function ($request, $response, $args) use ($pdo) {
             $update_obj = $my_class->update( $request->getParams(), $args['id'] );
             return $update_obj ? $update_obj : false;
         } else {
-            return oops( $response , 'Impossible de mettre à jour');
+            return oops( $response , 'Impossible de mettre à jour', 406);
         }
     } else {
         return denied( $response );
@@ -76,8 +76,8 @@ $app->delete('/{model}/{id}', function ( $request, $response, $args ) use ($pdo)
     }
 });
 
-function oops( $response, $msg ) {
-    return $response->withStatus(500)
+function oops( $response, $msg, $status ) {
+    return $response->withStatus($status)
         ->withHeader('Content-Type', 'application/json;charset=utf-8')
         ->write( $msg );
 }
